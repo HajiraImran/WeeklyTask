@@ -1,20 +1,34 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button} from 'react-native';
+import { useState } from 'react';
 
-export default function App() {
+
+const App = () => {
+  const [isHungry, setIsHungry] = useState(true);
+
   return (
     <View style={styles.container}>
-      <Text>Hajira Imran here! my first app</Text>
-      <StatusBar style="auto" />
+      <Text style={styles.text}>
+        {isHungry ? "I'm hungry!" : "I'm full!"}
+      </Text>
+      <Button title="Feed Me" onPress={() => setIsHungry(false)} />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'plum',
+  },
+  text: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    color: '#333',
   },
 });
+
+export default App;
